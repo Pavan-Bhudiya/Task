@@ -13,7 +13,8 @@ class User extends Authenticatable
 
     protected $fillable = [
         'name',
-        'email'
+        'email',
+        'password',
     ];
 
     protected $hidden = [
@@ -25,10 +26,10 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
+            'password' => 'hashed',
         ];
     }
 
-    // Relationship: A user has many wallets
     public function wallets()
     {
         return $this->hasMany(Wallet::class);
